@@ -104,7 +104,15 @@ class _SlikaKartica extends ConsumerWidget {
             children: [
               SlikaKataloga(url: s.url, cdn: s.cdn),
               if (s.izvor == 'upload')
-                const Positioned(right: 6, top: 6, child: Icon(Icons.upload, size: 18)),
+                Positioned(
+                  right: 6,
+                  top: 6,
+                  child: CircleAvatar(
+                    radius: 13,
+                    backgroundColor: Theme.of(context).colorScheme.surface.withValues(alpha: 0.85),
+                    child: Icon(Icons.upload, size: 16, color: Theme.of(context).colorScheme.onSurface),
+                  ),
+                ),
             ],
           ),
         ),
@@ -116,13 +124,15 @@ class _SlikaKartica extends ConsumerWidget {
       context: context,
       isScrollControlled: true,
       showDragHandle: true,
-      builder: (context) => Padding(
-        padding: EdgeInsets.fromLTRB(16, 0, 16, 16 + MediaQuery.viewInsetsOf(context).bottom),
+      useSafeArea: true,
+      builder: (context) => SingleChildScrollView(
+        // Tipkovnica i navigacijska traka: gumbi uvijek iznad njih.
+        padding: EdgeInsets.fromLTRB(16, 0, 16, 16 + MediaQuery.viewInsetsOf(context).bottom + MediaQuery.paddingOf(context).bottom),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            AspectRatio(aspectRatio: 1, child: SlikaKataloga(url: s.url, cdn: s.cdn)),
+            SizedBox(height: MediaQuery.sizeOf(context).height * 0.4, child: SlikaKataloga(url: s.url, cdn: s.cdn)),
             if (s.prompt != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(s.prompt!, maxLines: 4, overflow: TextOverflow.ellipsis)),
             if (s.razlog != null) Padding(padding: const EdgeInsets.only(top: 4), child: Text('Razlog: ${s.razlog}')),
             const SizedBox(height: 12),

@@ -90,7 +90,7 @@ class _Sadrzaj extends ConsumerWidget {
               maxCrossAxisExtent: 180,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
-              childAspectRatio: 1.1,
+              childAspectRatio: 0.95,
             ),
             itemCount: katalog.glasovi.length,
             itemBuilder: (context, i) => _GlasKartica(g: katalog.glasovi[i]),
@@ -119,13 +119,15 @@ class _GlasKartica extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(g.oznaka, style: t.displaySmall?.copyWith(fontWeight: FontWeight.w600, color: boje.primary)),
+              Text(g.oznaka, style: t.headlineLarge?.copyWith(fontWeight: FontWeight.w600, color: boje.primary)),
               const Spacer(),
               Text('${g.odobreno} / ${g.rijeci}', style: t.titleMedium),
               if (g.kandidata > 0 || g.uRedu > 0)
                 Text(
                   [if (g.kandidata > 0) '${g.kandidata} za pregled', if (g.uRedu > 0) '${g.uRedu} u redu'].join(' · '),
                   style: t.bodySmall,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
               const SizedBox(height: 6),
               LinearProgressIndicator(value: udio, borderRadius: BorderRadius.circular(4)),
