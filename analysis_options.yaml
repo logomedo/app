@@ -1,0 +1,18 @@
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+include: package:very_good_analysis/analysis_options.yaml
+
+linter:
+  rules:
+    # Imena su hrvatska i dokumentacija je u docs/, ne u svakom javnom članu.
+    public_member_api_docs: false
+    lines_longer_than_80_chars: false
+    sort_constructors_first: false
+    # Klasična sintaksa konstruktora (Dart 3.13 predlaže `new`/primarne): čitljivije za sada.
+    unnecessary_type_name_in_constructor: false
+    # Provideri (Riverpod) imaju očit tip iz konstruktora.
+    specify_nonobvious_property_types: false
+    use_setters_to_change_properties: false
