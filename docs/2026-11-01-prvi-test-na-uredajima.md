@@ -25,10 +25,10 @@ uređaju s gestama ili tipkama, ne samo u emulatoru.
 
 - **Taildrop (`tailscale file cp`) na Android ne radi pouzdano**: dva pokušaja (55 MB i 19 MB) zapela
   su na ~1 MB, preko DERP relaya i izravno. Odbačeno.
-- **Radi:** obični HTTP server vezan samo na Tailscale IP Maca, link u WhatsApp grupu „Matija Only”:
+- **Radi:** obični HTTP server vezan samo na Tailscale IP Maca, link poslan sebi na mobitel:
   ```bash
-  python3 -m http.server 8765 --bind 100.125.115.83   # iz mape s APK-om
-  # na telefonu: http://100.125.115.83:8765/LogoMedo.apk (samo s uključenim Tailscaleom)
+  python3 -m http.server 8765 --bind <tailscale-ip-maca>   # iz mape s APK-om
+  # na telefonu: http://<tailscale-ip-maca>:8765/LogoMedo.apk (samo s uključenim Tailscaleom)
   ```
   Ugasiti nakon instalacije.
 - **APK za jedan ABI**: `flutter build apk --release --split-per-abi --target-platform android-arm64
