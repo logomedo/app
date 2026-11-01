@@ -82,3 +82,9 @@ ugrađen u naš ekran, bez dozvole. Za njega treba mali vlastiti plugin; vrijedi
 - `applicationId` / bundle id: **`com.logomedo.app`**. Ne mijenja se nakon prve objave.
 - Ista vrijednost je shema povratka prijave (`com.logomedo.app://prijava`), u `AndroidManifest.xml`,
   `lib/core/konfig.dart` i na serveru (`src/pages/admin/api/app-kod.ts`).
+
+## Vezani dokumenti
+
+- [2026-11-01-prvi-test-na-uredajima.md](2026-11-01-prvi-test-na-uredajima.md): što je potvrđeno na
+  uređajima, bugovi, instalacija bez USB-a (Taildrop ne radi, HTTP na Tailscale IP radi)
+- [izdavanje.md](izdavanje.md), `logomedo.com/docs/app-api.md`
