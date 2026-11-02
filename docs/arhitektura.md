@@ -37,7 +37,9 @@ lib/
   features/
     prijava/  ekran prijave
     katalog/  glasovi, glas, riječ, upload, tražilica, slika (keš)
-    (vjezbe/  kasnije: renderer po vrsti zadatka, sesija s djetetom, snimanje)
+    vjezbe/   vježbenice, popis, igra (bilježnica ili jedan zadatak), scena.dart (renderer
+              vrste `scena`), govor.dart (flutter_tts, hr-HR); kasnije ostale vrste, sesija
+              s djetetom, snimanje
 ```
 
 - **Stanje:** Riverpod 3 (bez code-gena). Provideri po ekranu (`FutureProvider.autoDispose.family`),
@@ -60,6 +62,24 @@ dopušta samo aplikacijama kojima je galerija glavna funkcija, pa bi admin aplik
 odbijanje. Između toga je *embedded photo picker* (Android 14+, `androidx.photopicker`): picker
 ugrađen u naš ekran, bez dozvole. Za njega treba mali vlastiti plugin; vrijedi kad upload postane
 čest posao.
+
+## Vježbenice: što je napravljeno (2. 11. 2026.)
+
+- Katalog → ikona knjige → **Vježbenice**: bilježnice (igra redom) i zadaci (pregled jednog
+  zadatka). Uređivanje ostaje na webu.
+- Igra preko cijelog ekrana (immersive): zatvori, lampice po ekranu (upaljena = riješen),
+  natrag/dalje. Riješena scena nakon 1,6 s ide na sljedeći ekran, kao u pregledniku.
+- **Scena** (`scena.dart`) je prijepis `logomedo.com/src/lib/scena-prikaz.ts` + `scena.css`:
+  mjere u postotku kraće strane (`m` = cqmin) i širine (`cw` = cqw), vodoravno jedan red
+  gumba, uspravno dva iznad 4 gumba, pozadina prema orijentaciji (druga s obrubom ako nema
+  tražene). Pogođeni gumbi su u stanju igre, pa okretanje ekrana ništa ne gubi. Kad se
+  promijeni web prikaz scene, mijenja se i ovaj.
+- Ostale vrste (odabir, uljez, povezivanje) imaju zamjenski ekran „još nije u aplikaciji”.
+- Pitanje se čita glasom sustava (`flutter_tts`, hr-HR; Android traži `TTS_SERVICE` u
+  `<queries>`). Kvačica pogotka je zlatni krug (na webu debela SVG kvačica).
+- Provjereno na motorola edge 30 ultra (lokalni server): popis, scena uspravno i vodoravno,
+  krivi/točni dodiri, kraj scene, prijelaz na ekran vrste koja još nema renderer. Zvuk nije
+  provjeren slušanjem.
 
 ## Kasnije, s vježbenicama
 

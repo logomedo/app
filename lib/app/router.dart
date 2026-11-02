@@ -9,6 +9,8 @@ import 'package:logomedo_app/features/katalog/katalog_ekran.dart';
 import 'package:logomedo_app/features/katalog/rijec_ekran.dart';
 import 'package:logomedo_app/features/katalog/upload_ekran.dart';
 import 'package:logomedo_app/features/prijava/prijava_ekran.dart';
+import 'package:logomedo_app/features/vjezbe/igra_ekran.dart';
+import 'package:logomedo_app/features/vjezbe/vjezbe_ekran.dart';
 
 /// Rute. Admin dio je pod korijenom; kasnije vježbenice za logopede dobivaju svoj dio
 /// (npr. /vjezbe), a početni ekran se bira po ulozi.
@@ -33,6 +35,9 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(path: '/ucitava', builder: (_, _) => const Scaffold(body: Center(child: CircularProgressIndicator()))),
       GoRoute(path: '/prijava', builder: (_, _) => const PrijavaEkran()),
       GoRoute(path: '/', builder: (_, _) => const KatalogEkran()),
+      GoRoute(path: '/vjezbe', builder: (_, _) => const VjezbeEkran()),
+      GoRoute(path: '/biljeznica/:slug', builder: (_, s) => BiljeznicaIgraEkran(slug: s.pathParameters['slug']!)),
+      GoRoute(path: '/zadatak/:id', builder: (_, s) => ZadatakIgraEkran(id: int.parse(s.pathParameters['id']!))),
       GoRoute(path: '/glas/:slug', builder: (_, s) => GlasEkran(slug: s.pathParameters['slug']!)),
       GoRoute(
         path: '/rijec/:slug',

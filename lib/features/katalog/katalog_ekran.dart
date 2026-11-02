@@ -22,6 +22,11 @@ class KatalogEkran extends ConsumerWidget {
         title: const Text('Katalog'),
         actions: [
           IconButton(
+            tooltip: 'Vježbenice',
+            icon: const Icon(Icons.menu_book_outlined),
+            onPressed: () => context.push('/vjezbe'),
+          ),
+          IconButton(
             tooltip: 'Traži riječ',
             icon: const Icon(Icons.search),
             onPressed: () => otvoriTrazilicu(context),
