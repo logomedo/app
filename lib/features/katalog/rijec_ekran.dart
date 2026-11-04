@@ -44,7 +44,7 @@ class _Detalj extends StatelessWidget {
   final RijecDetalj r;
 
   static const _redoslijed = ['odobrena', 'kandidat', 'odbijena'];
-  static const _naslovi = {'odobrena': 'Odobrena', 'kandidat': 'Za pregled', 'odbijena': 'Odbijene'};
+  static const _naslovi = {'odobrena': 'Odobrene', 'kandidat': 'Za pregled', 'odbijena': 'Odbijene'};
 
   @override
   Widget build(BuildContext context) {
