@@ -94,7 +94,7 @@ class _ScenaPrikazState extends ConsumerState<ScenaPrikaz> {
                 )
               else
                 Center(
-                  child: Text('Pozadina nije odabrana',
+                  child: Text('Situacija nije odabrana',
                       style: TextStyle(color: const Color(0xFF8A7B62), fontWeight: FontWeight.w700, fontSize: 4 * m)),
                 ),
               Positioned(
